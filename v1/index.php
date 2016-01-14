@@ -6,7 +6,12 @@
         //process 
         $name = $_GET['name'];
         $price = get_price($name, $books);
-        echo $price;
+        
+        if(empty($price)) {
+            //book not found
+        } else {
+            //respond with price
+        }
     } else{
         //throw error
     }
