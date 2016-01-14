@@ -1,7 +1,7 @@
 <?php
     if(isset($_POST['submit'])) {
         $name = $_POST['bookname'];
-        $response = file_get_contents('server.php?name='.$name);
+        $response = file_get_contents('https://restful-php-vish94.c9users.io/RESTful-PHP/v1/server.php?name='.$name);
         $response = json_decode($response);
         echo "Status: ".$response['status'].'<br/>';
         echo "Message: ".$response['status_message'].'<br/>';
