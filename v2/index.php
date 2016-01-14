@@ -4,7 +4,7 @@
     false, 
     stream_context_create(array(
         'http' => array(
-            'method' => 'DELETE','ignore_errors' => true
+            'method' => 'GET','ignore_errors' => true
             )
         ))
     );
