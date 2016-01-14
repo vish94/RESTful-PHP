@@ -9,11 +9,14 @@
         
         if(empty($price)) {
             //book not found
+            deliver_response(200, "Book not found", NULL);
         } else {
             //respond with price
+            deliver_response(200, "Book Found", $price);
         }
     } else{
         //throw error
+        deliver_response(404, "Invalid Request", NULL);
     }
     
     function deliver_response($status, $status_message, $data) {
@@ -21,7 +24,7 @@
         $response['status'] = $status;
         $response['status_message'] = $status_message;
         $response['data'] = $data;
-        $json_response = jason_encode($response);
+        $json_response = json_encode($response);
         echo $json_response;
     }
     
