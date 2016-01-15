@@ -10,6 +10,12 @@ class Myorders extends DatabaseObject
 	public $name;
 
 	protected static $db_fields = array('id', 'name');
+
+	public static function make($name) {
+		$order = new Myorders();
+		$order->name = $name;
+		return $order;
+	}
 	
 	//datbase object class file
 	public static function find_all() {

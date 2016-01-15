@@ -1,20 +1,46 @@
 <?php
-	$data = array("1"=>"name");
-	$data = json_encode($data);
+	//GET Query
 	$result = file_get_contents(
-    'http://localhost/rest/api', 
+    'http://localhost/rest/api/orders/', 
+    false, 
+    stream_context_create(array(
+        'http' => array(
+            'method' => 'GET',
+            'ignore_errors' => true,
+            )
+        ))
+    );
+    $result = json_decode($result, true);
+    print_r($result);
+    /*if(!empty($result['data'])) {
+	    foreach($result['data'] as $order) {
+	    	echo $order['name'];
+	    }
+	}*/
+?>
+
+<?php
+	//POST Query
+	/*$data = http_build_query(
+    array(
+        'id' => '1',
+        'name' => 'iPhone'
+    	)
+	);
+	$result = file_get_contents(
+    'http://localhost/rest/api/', 
     false, 
     stream_context_create(array(
         'http' => array(
             'method' => 'POST',
             'ignore_errors' => true,
-            'header' => 'Content-Type: application/json',
+            'header' => 'Content-type: application/x-www-form-urlencoded',
             'content' => $data
             )
         ))
     );
     $result = json_decode($result, true);
-    echo $result;
+    print_r($result);
     /*if(!empty($result['data'])) {
 	    foreach($result['data'] as $order) {
 	    	echo $order['name'];

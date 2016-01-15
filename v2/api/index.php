@@ -21,8 +21,11 @@
 		}
 
 	} elseif($method=="POST") {
-		$data = $_POST['content'];
-		echo $data;
+		
+		$order = Myorders::make($_POST['name']);
+		$order->save();
+		$response['data'] = "Saved";
+		//echo json_encode($response);
 
 	} elseif($method=="PUT") {
 
@@ -32,5 +35,5 @@
 		$response['data'] = "Invalid Method";
 		$response['status'] = 404;
 	}
-	//echo json_encode($response);
+	echo json_encode($response);
 ?>
