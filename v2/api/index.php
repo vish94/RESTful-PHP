@@ -13,9 +13,15 @@
 
 		} else {
 			$ele = array_shift($uri);
-			if($ele=="orders") {
+			if($ele=="orders" && (empty($uri) || empty($uri[0]))) {
 				$orders = Myorders::find_all();
 				$response['data'] = $orders;
+			} else {
+				$id = array_shift($uri);
+				if(ctype_digit($id) && empty($uri)) {
+					$order = Myorders::find_by_id($id);
+					$response['data'] = $order;
+				}
 			}
 
 		}

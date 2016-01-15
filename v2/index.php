@@ -1,6 +1,7 @@
 <?php
 	//GET Query
-	$result = file_get_contents(
+	//GET all orders
+	/*$result = file_get_contents(
     'http://localhost/rest/api/orders/', 
     false, 
     stream_context_create(array(
@@ -21,6 +22,7 @@
 
 <?php
 	//POST Query
+	//POST a new entry into database
 	/*$data = http_build_query(
     array(
         'id' => '1',
@@ -41,9 +43,23 @@
     );
     $result = json_decode($result, true);
     print_r($result);
-    /*if(!empty($result['data'])) {
-	    foreach($result['data'] as $order) {
-	    	echo $order['name'];
-	    }
-	}*/
+
+?>
+
+<?php
+	//GET specific order from database by ID
+	$result = file_get_contents(
+    'http://localhost/rest/api/orders', 
+    false, 
+    stream_context_create(array(
+        'http' => array(
+            'method' => 'GET',
+            'ignore_errors' => true,
+            )
+        ))
+    );
+    $result = json_decode($result, true);
+    print_r($result);
+
+
 ?>
