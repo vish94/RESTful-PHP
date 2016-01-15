@@ -1,13 +1,23 @@
 <?php
-    $result = file_get_contents(
-    'https://restful-php-vish94.c9users.io/RESTful-PHP/v2/server.php', 
+	$data = array("1"=>"name");
+	$data = json_encode($data);
+	$result = file_get_contents(
+    'http://localhost/rest/api', 
     false, 
     stream_context_create(array(
         'http' => array(
-            'method' => 'GET','ignore_errors' => true
+            'method' => 'POST',
+            'ignore_errors' => true,
+            'header' => 'Content-Type: application/json',
+            'content' => $data
             )
         ))
     );
     $result = json_decode($result, true);
-    echo $result['method'];
+    echo $result;
+    /*if(!empty($result['data'])) {
+	    foreach($result['data'] as $order) {
+	    	echo $order['name'];
+	    }
+	}*/
 ?>
