@@ -43,13 +43,13 @@
     );
     $result = json_decode($result, true);
     print_r($result);
-
+	*/
 ?>
 
 <?php
 	//GET specific order from database by ID
 	$result = file_get_contents(
-    'http://localhost/rest/api/orders', 
+    'http://localhost/rest/api/orders/6', 
     false, 
     stream_context_create(array(
         'http' => array(
