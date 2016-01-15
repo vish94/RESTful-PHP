@@ -18,14 +18,14 @@
 				$response['data'] = $orders;
 			} else {
 				$id = array_shift($uri);
-				if(ctype_digit($id) && empty($uri)) {
+				if(ctype_digit($id) && (empty($uri) || empty($uri[0]))) {
 					$order = Myorders::find_by_id($id);
 					if(empty($order)) {
 						$response['data'] = "Not found";
 						$response['status'] = 404;
 					} else
 						$response['data'] = $order;
-				}
+				} 
 			}
 
 		}

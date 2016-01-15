@@ -1,7 +1,7 @@
 <?php
 	//GET Query
 	//GET all orders
-	/*$result = file_get_contents(
+	$result = file_get_contents(
     'http://localhost/rest/api/orders/', 
     false, 
     stream_context_create(array(
@@ -17,7 +17,7 @@
 	    foreach($result['data'] as $order) {
 	    	echo $order['name'];
 	    }
-	}*/
+	}
 ?>
 
 <?php
@@ -61,12 +61,11 @@
     $result = json_decode($result, true);
     print_r($result);*/
 
-
 ?>
 
 <?php
 	//DELETE order By ID
-	$result = file_get_contents(
+	/*$result = file_get_contents(
     'http://localhost/rest/api/orders/9', 
     false, 
     stream_context_create(array(
@@ -78,5 +77,5 @@
     );
     $result = json_decode($result, true);
     print_r($result);
-
+	*/
 ?>
