@@ -48,7 +48,7 @@
 
 <?php
 	//GET specific order from database by ID
-	$result = file_get_contents(
+	/*$result = file_get_contents(
     'http://localhost/rest/api/orders/6', 
     false, 
     stream_context_create(array(
@@ -59,7 +59,24 @@
         ))
     );
     $result = json_decode($result, true);
-    print_r($result);
+    print_r($result);*/
 
+
+?>
+
+<?php
+	//DELETE order By ID
+	$result = file_get_contents(
+    'http://localhost/rest/api/orders/9', 
+    false, 
+    stream_context_create(array(
+        'http' => array(
+            'method' => 'DELETE',
+            'ignore_errors' => true,
+            )
+        ))
+    );
+    $result = json_decode($result, true);
+    print_r($result);
 
 ?>

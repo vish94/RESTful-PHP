@@ -35,11 +35,25 @@
 		$order = Myorders::make($_POST['name']);
 		$order->save();
 		$response['data'] = "Saved";
-		//echo json_encode($response);
 
 	} elseif($method=="PUT") {
 
 	} elseif($method=="DELETE") {
+		$ele = array_shift($uri);
+		if($ele=="orders" && !empty($uri[0])) {
+			if(ctype_digit($uri[0])) {
+				$id = $uri[0];
+				$order = Myorders::find_by_id($id);
+				if(!empty($order)) {
+					$order->delete();
+					$response['data'] = $order;
+					unset($order);
+				} else {
+					$response['data'] = "Not found";
+					$response['status'] = 404;
+				}
+			}
+		}
 
 	} else {
 		$response['data'] = "Invalid Method";
