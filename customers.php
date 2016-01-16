@@ -1,6 +1,6 @@
 <?php require_once('requires/header.php'); ?>
 <?php
-	$url = 'http://localhost/rest/api/customers/';
+	$url = $apihost.'api/customers/';
 	$method = 'GET';
 	if(isset($_GET['action'])) {
 		if($_GET['action']=="show") {

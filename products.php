@@ -1,14 +1,7 @@
 <?php require_once('requires/header.php'); ?>
 <?php
-	$url = 'http://localhost/rest/api/products/';
+	$url = $apihost.'api/products/';
 	$method = 'GET';
-	if(isset($_GET['action'])) {
-		if($_GET['action']=="show") {
-			$id = $_GET['id'];
-			$url = $url.$id;
-			$method = "GET";
-		}
-	}
 	$result = file_get_contents($url, false, 
 	    stream_context_create(array(
 	        'http' => array(
@@ -42,7 +35,7 @@
 			echo '<td>'.$product['id'].'</td>';
 			echo '<td>'.$product['name'].'</td>';
 			echo '<td>'.$product['price'].'</td>';
-			echo '<td><a href="orders.php?action=show&id='.$product['id'].'">Show</a></td>';
+			echo '<td><a href="'.$dir_site.'products/edit/'.$product['id'].'">Edit</a></td>';
 			echo '</tr>';
 			$i++;
 		}

@@ -30,7 +30,7 @@ class Products extends DatabaseObject
 
 	public static function find_by_id($id=0) {
 		$result_array = self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE id = {$id} LIMIT 1");
-		return $result_array;
+		return !empty($result_array) ? array_shift($result_array) : false ;
 	}
 
 	public static function find_by_sql($sql="") {

@@ -28,7 +28,14 @@
 		$response['data'] = "Saved";
 
 	} elseif($method=="PUT") {
-
+		parse_str(file_get_contents('php://input'), $data);
+		$product = Products::find_by_id($data['id']);
+		$product->name = $data['name'];
+		$product->price = $data['price'];
+		if($product->save())
+			$response['data'] = 1;
+		else
+			$response['data'] = 0;
 	} elseif($method=="DELETE") {
 		$ele = array_shift($uri);
 		if($ele=="products" && !empty($uri[0])) {
