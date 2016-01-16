@@ -3,16 +3,16 @@
 /**
 * Accessory
 */
-class Orders extends DatabaseObject
+class Customers extends DatabaseObject
 {
-	protected static $table_name = "orders";
+	protected static $table_name = "customers";
 	public $id;
 	public $name;
 
 	protected static $db_fields = array('id', 'name');
 
 	public static function make($name) {
-		$order = new Orders();
+		$order = new Products();
 		$order->name = $name;
 		return $order;
 	}

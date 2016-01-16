@@ -9,7 +9,6 @@
 		<div id="sidebar">
 			<ul>
 			<li><a href="index.php">Home</a></li>
-			<li><a href="orders.php">All Orders</a></li>
-			
-
+			<li><a href="products.php">All Products</a></li>
+			<li><a href="customers.php">All Customers</a></li>
 		</div>
