@@ -14,12 +14,12 @@
 		} else {
 			$ele = array_shift($uri);
 			if($ele=="orders" && (empty($uri) || empty($uri[0]))) {
-				$orders = Myorders::find_all();
+				$orders = Orders::find_all();
 				$response['data'] = $orders;
 			} else {
 				$id = array_shift($uri);
 				if(ctype_digit($id) && (empty($uri) || empty($uri[0]))) {
-					$order = Myorders::find_by_id($id);
+					$order = Orders::find_by_id($id);
 					if(empty($order)) {
 						$response['data'] = "Not found";
 						$response['status'] = 404;
@@ -32,7 +32,7 @@
 
 	} elseif($method=="POST") {
 		
-		$order = Myorders::make($_POST['name']);
+		$order = Orders::make($_POST['name']);
 		$order->save();
 		$response['data'] = "Saved";
 
@@ -43,7 +43,7 @@
 		if($ele=="orders" && !empty($uri[0])) {
 			if(ctype_digit($uri[0])) {
 				$id = $uri[0];
-				$order = Myorders::find_by_id($id);
+				$order = Orders::find_by_id($id);
 				if(!empty($order)) {
 					$order->delete();
 					$response['data'] = $order;
