@@ -56,8 +56,8 @@
     $result = json_decode($result, true);
     $customers = $result['data'];
 
-    if(isset($_POST['custsubmit'])) {
-    	$url = $apihost.'api/orders/customer/'.$_POST['customer'];
+    if(isset($_GET['custsubmit'])) {
+    	$url = $apihost.'api/orders/customer/'.$_GET['customer'];
 		$method = 'GET';
 		$result = file_get_contents($url, false, 
 		    stream_context_create(array(
@@ -85,7 +85,7 @@
 	}
 ?>
 <div id="content">
-	<h2> <?php if(isset($_POST['custsubmit'])) echo find_customer_name($_POST['customer'], $apihost); ?> Orders</h2>
+	<h2> <?php if(isset($_GET['custsubmit'])) echo find_customer_name($_GET['customer'], $apihost); ?> Orders</h2>
 
 	<?php 
 		if(isset($delresult)) {
@@ -100,7 +100,7 @@
 	<?php echo '<b> Method: '.$method.'</b><br/>'; ?>
 	<?php echo '<i> API Response: '; print_r($result); echo '</i><br/><br/><hr>'; ?>
 
-	<form action="<?php echo $dir_site.'orders/'?>" method="POST">
+	<form action="<?php echo $dir_site.'orders/'?>" method="GET">
 		<label for="textprice"> Show specific customer's orders </label><br/>
 		<select name="customer" id="textprice">
 			<?php
