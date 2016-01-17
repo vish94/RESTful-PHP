@@ -1,5 +1,9 @@
 <?php require_once('requires/header.php'); ?>
-
+<?php
+	if(!isset($_SESSION['admin'])) {
+		Header("Location: ".$dir_site.'login/');
+	}
+?>
 <div id="content">
 	<h2> Add Product</h2>
 	<form method="POST" action="<?php echo $dir_site.'products/'; ?>">

@@ -7,6 +7,9 @@
 <body>
 	<div id="page">
 		<div id="sidebar">
+		<?php
+			if(isset($_SESSION['admin'])) { 
+		?>
 			<ul>
 			<li><a href="<?php echo $dir_site; ?>">Home</a></li>
 			<li>
@@ -24,4 +27,12 @@
 				<li><a href="<?php echo $dir_site.'customers/add/'?>"> Add Customer </a></li>
 				</ul>
 			</li>
+
+			<li><a href="<?php echo $dir_site.'?action=logout' ?>"> Logout </a></li>
+			<?php
+				} else {
+					echo '<ul>';
+					echo '<li><a href="'.$dir_site.'login/"> Login </a></li>';
+				}
+			?>
 		</div>

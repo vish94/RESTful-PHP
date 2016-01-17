@@ -7,4 +7,5 @@
 	$dir_assets_css = $dir_assets.'css/';
 
 	$apihost = 'http://localhost/rest/';
+	session_start();
 ?>

@@ -1,5 +1,10 @@
 <?php require_once('requires/header.php'); ?>
 <?php
+	if(!isset($_SESSION['admin'])) {
+		Header("Location: ".$dir_site.'login/');
+	}
+?>
+<?php
 
 	if(isset($_GET['action'])) {
 		if($_GET['action']=="delete" && ctype_digit($_GET['id'])) {

@@ -1,5 +1,10 @@
 <?php require_once('requires/header.php'); ?>
 <?php
+	if(!isset($_SESSION['admin'])) {
+		Header("Location: ".$dir_site.'login/');
+	}
+?>
+<?php
 	if(isset($_POST['submit'])) {
 		$id = $_GET['id'];
 		$data = http_build_query(array(

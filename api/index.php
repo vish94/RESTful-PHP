@@ -13,6 +13,8 @@
 		require_once('controllers/products.php');
 	} elseif($uri[0] == "customers") {
 		require_once('controllers/customers.php');
+	} elseif($uri[0] == "login") {
+		require_once('controllers/login.php');
 	} else {
 		$response['data'] = "Invalid Request";
 	}
