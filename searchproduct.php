@@ -6,7 +6,7 @@
 ?>
 
 <?php
-	if(isset($_POST['submit'])) {
+	if(isset($_POST['submit'])) {										// API Call to search for product by name
 		$name = $_POST['name'];
 		$data = http_build_query(array(
 	        'name' => $_POST['name']
@@ -24,7 +24,7 @@
 		            )
 		        ))
 		    );
-	    $result = json_decode($result, true);
+	    $result = json_decode($result, true);							////
 	}
 ?>
 <div id="content">

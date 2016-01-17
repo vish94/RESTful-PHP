@@ -5,7 +5,7 @@
 	}
 ?>
 <?php
-	if(isset($_GET['action'])) {
+	if(isset($_GET['action'])) {										// API Call to delete an order
 		if($_GET['action']=="delete" && ctype_digit($_GET['id'])) {
 			$id = $_GET['id'];
 			$delurl = $apihost.'api/orders/'.$id;
@@ -20,7 +20,7 @@
 	    	);
     		$delresult = json_decode($delresult, true);
 		}
-	} elseif(isset($_POST['submit'])) {
+	} elseif(isset($_POST['submit'])) {									// API Call to create a new order
 		$data = http_build_query(
 	    array(
 	        'customer_id' => $_POST['customer'],
@@ -43,7 +43,7 @@
 	    );
 	    $delresult = json_decode($delresult, true);
 	}
-	$url = $apihost.'api/customers/';
+	$url = $apihost.'api/customers/';									// API Call to retrieve all customers for dropdown menu
 	$method = 'GET';
 	$result = file_get_contents($url, false, 
 	    stream_context_create(array(
@@ -56,7 +56,7 @@
     $result = json_decode($result, true);
     $customers = $result['data'];
 
-    if(isset($_GET['custsubmit'])) {
+    if(isset($_GET['custsubmit'])) {									//API Call to get orders by customer id
     	$url = $apihost.'api/orders/customer/'.$_GET['customer'];
 		$method = 'GET';
 		$result = file_get_contents($url, false, 
@@ -69,7 +69,7 @@
 		    );
 	    $result = json_decode($result, true);
 	    $orders = $result['data'];
-    } else {
+    } else {															//API Call to get all orders
 		$url = $apihost.'api/orders/';
 		$method = 'GET';
 		$result = file_get_contents($url, false, 
@@ -124,7 +124,7 @@
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$order['id'].'</td>';
-			echo '<td>'.find_customer_name($order['customer_id'], $apihost).'</td>';
+			echo '<td>'.find_customer_name($order['customer_id'], $apihost).'</td>';	//functions defined in requires/functions.php
 			echo '<td>'.find_product_name($order['product_id'], $apihost).'</td>';
 			echo '<td><a href="'.$dir_site.'orders/?action=delete&id='.$order['id'].'"> Delete </a></td>';
 			echo '</tr>';

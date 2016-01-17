@@ -1,7 +1,7 @@
 <?php require_once('requires/header.php'); ?>
 
 <?php
-	if(isset($_POST['submit'])) {
+	if(isset($_POST['submit'])) {				//API Call to submit username and password and authenticate user
 		$data = http_build_query(
 	    array(
 	        'username' => $_POST['username'],
@@ -46,6 +46,10 @@
 
 		<input type="submit" value="Submit" name="submit">
 	</form>
+
+	<b> Test username and password </b><br/>
+	<i>Username: admin </i><br/>
+	<i>Password: password</i></br/>
 
 </div>
 

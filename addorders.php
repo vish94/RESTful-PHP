@@ -6,7 +6,7 @@
 ?>
 
 <?php
-	$url = $apihost.'api/products/';
+	$url = $apihost.'api/products/';					//API call to get all products for dropdown list
 	$method = 'GET';
 	$result = file_get_contents($url, false, 
 	    stream_context_create(array(
@@ -19,7 +19,7 @@
     $result = json_decode($result, true);
     $products = $result['data'];
 
-    $url = $apihost.'api/customers/';
+    $url = $apihost.'api/customers/';					//API Call to get all customers for dropdown list
 	$method = 'GET';
 	$result = file_get_contents($url, false, 
 	    stream_context_create(array(

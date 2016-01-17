@@ -5,7 +5,7 @@
 	}
 ?>
 <?php
-	if(isset($_POST['submit'])) {
+	if(isset($_POST['submit'])) {				//API Call to edit a product using PUT Method
 		$id = $_GET['id'];
 		$data = http_build_query(array(
 	        'id' => $id,
@@ -27,7 +27,7 @@
 		    );
 	    $saveresult = json_decode($saveresult, true);
 	}
-	if(isset($_GET['id'])) {
+	if(isset($_GET['id'])) {				//API Call to get details of the current product
 		$id = $_GET['id'];
 		$url = $apihost.'api/products/'.$id;
 		$method = 'GET';

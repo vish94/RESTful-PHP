@@ -6,7 +6,7 @@
 ?>
 <?php
 
-	if(isset($_GET['action'])) {
+	if(isset($_GET['action'])) {												//API Call to delete a customer
 		if($_GET['action']=="delete" && ctype_digit($_GET['id'])) {
 			$id = $_GET['id'];
 			$delurl = $apihost.'api/customers/'.$id;
@@ -19,9 +19,9 @@
 		            )
 		        ))
 	    	);
-    		$delresult = json_decode($delresult, true);
+    		$delresult = json_decode($delresult, true);							////
 		}
-	}  elseif(isset($_POST['submit'])) {
+	}  elseif(isset($_POST['submit'])) {										//API Call to add a new customer
 		$data = http_build_query(
 	    array(
 	        'name' => $_POST['name']
@@ -41,9 +41,9 @@
 	            )
 	        ))
 	    );
-	    $delresult = json_decode($delresult, true);
+	    $delresult = json_decode($delresult, true);								////
 	}
-	$url = $apihost.'api/customers/';
+	$url = $apihost.'api/customers/';											//API Call to retrieve all customers
 	$method = 'GET';
 	if(isset($_GET['action'])) {
 		if($_GET['action']=="show") {
@@ -61,7 +61,7 @@
 	        ))
 	    );
     $result = json_decode($result, true);
-    $customers = $result['data'];
+    $customers = $result['data'];												////
 
 ?>
 <div id="content">
@@ -94,7 +94,7 @@
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$customer['id'].'</td>';
 			echo '<td>'.$customer['name'].'</td>';
-			echo '<td>'.count_orders_by_customer_id($customer['id'], $apihost).'</td>';
+			echo '<td>'.count_orders_by_customer_id($customer['id'], $apihost).'</td>';	//function defined in requires/functions.php
 			echo '<td><a href="'.$dir_site.'orders/?customer='.$customer['id'].'&custsubmit=Submit"> Show </a></td>';
 			echo '<td><a href="'.$dir_site.'customers/edit/'.$customer['id'].'">Edit</a> <a href="'.$dir_site.'customers/?action=delete&id='.$customer['id'].'"> Delete </a></td>';
 			echo '</tr>';

@@ -6,7 +6,7 @@
 ?>
 <?php
 
-	if(isset($_GET['action'])) {
+	if(isset($_GET['action'])) {												//API Call to delete a product
 		if($_GET['action']=="delete" && ctype_digit($_GET['id'])) {
 			$id = $_GET['id'];
 			$delurl = $apihost.'api/products/'.$id;
@@ -19,9 +19,9 @@
 		            )
 		        ))
 	    	);
-    		$delresult = json_decode($delresult, true);
+    		$delresult = json_decode($delresult, true);							////
 		}
-	} elseif(isset($_POST['submit'])) {
+	} elseif(isset($_POST['submit'])) {											//API Call to add a new product
 		$data = http_build_query(
 	    array(
 	        'name' => $_POST['name'],
@@ -42,9 +42,9 @@
 	            )
 	        ))
 	    );
-	    $delresult = json_decode($delresult, true);
+	    $delresult = json_decode($delresult, true);								////
 	}
-	$url = $apihost.'api/products/';
+	$url = $apihost.'api/products/';											//API Call to retrieve all products
 	$method = 'GET';
 	$result = file_get_contents($url, false, 
 	    stream_context_create(array(
