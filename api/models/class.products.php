@@ -16,7 +16,7 @@ class Products extends DatabaseObject
 		$product = new Products();
 		$product->name = $name;
 		$product->price = $price;
-		return $order;
+		return $product;
 	}
 
 	public static function find_by_name() {

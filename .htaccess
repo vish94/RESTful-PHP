@@ -8,4 +8,7 @@
     RewriteRule ^products/edit/([a-z0-9]+)/?$ editproduct.php?id=$1 [NC,L]
     RewriteRule ^customers/edit/([a-z0-9]+)/?$ editcustomer.php?id=$1 [NC,L]
 
+    RewriteRule ^products/add/?$ addproduct.php [NC,L]
+    RewriteRule ^customers/add/?$ addcustomer.php [NC,L]
+
 </IfModule>

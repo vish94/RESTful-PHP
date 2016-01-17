@@ -12,9 +12,9 @@ class Customers extends DatabaseObject
 	protected static $db_fields = array('id', 'name');
 
 	public static function make($name) {
-		$order = new Products();
-		$order->name = $name;
-		return $order;
+		$customer = new Customers();
+		$customer->name = $name;
+		return $customer;
 	}
 
 	public static function find_by_name() {

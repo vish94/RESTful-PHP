@@ -16,6 +16,27 @@
 	    	);
     		$delresult = json_decode($delresult, true);
 		}
+	}  elseif(isset($_POST['submit'])) {
+		$data = http_build_query(
+	    array(
+	        'name' => $_POST['name']
+	    	)
+		);
+		$delmethod = "POST";
+		$delurl = 'http://localhost/rest/api/customers/';
+		$delresult = file_get_contents(
+	    $delurl, 
+	    false, 
+	    stream_context_create(array(
+	        'http' => array(
+	            'method' => $delmethod,
+	            'ignore_errors' => true,
+	            'header' => 'Content-type: application/x-www-form-urlencoded',
+	            'content' => $data
+	            )
+	        ))
+	    );
+	    $delresult = json_decode($delresult, true);
 	}
 	$url = $apihost.'api/customers/';
 	$method = 'GET';

@@ -23,9 +23,11 @@
 
 	} elseif($method=="POST") {
 		
-		$customer = Costumers::make($_POST['name']);
-		$customer->save();
-		$response['data'] = "Saved";
+		$customer = Customers::make($_POST['name']);
+		if($customer->save())
+			$response['data'] = "Saved";
+		else
+			$response['data'] = "Error";
 
 	} elseif($method=="PUT") {
 		parse_str(file_get_contents('php://input'), $data);
@@ -41,10 +43,10 @@
 		if($ele=="customers" && !empty($uri[0])) {
 			if(ctype_digit($uri[0])) {
 				$id = $uri[0];
-				$customer = Costumers::find_by_id($id);
+				$customer = Customers::find_by_id($id);
 				if(!empty($customer)) {
 					$customer->delete();
-					$response['data'] = $customer;
+					$response['data'] = "Successfully Deleted!";
 					unset($customer);
 				} else {
 					$response['data'] = "Not found";
