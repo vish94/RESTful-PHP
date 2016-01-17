@@ -3,25 +3,26 @@
 /**
 * Accessory
 */
-class Products extends DatabaseObject
+class Orders extends DatabaseObject
 {
-	protected static $table_name = "products";
+	protected static $table_name = "orders";
 	public $id;
-	public $name;
-	public $price;
+	public $customer_id;
+	public $product_id;
 
-	protected static $db_fields = array('id', 'name', 'price');
+	protected static $db_fields = array('id', 'customer_id', 'product_id');
 
-	public static function make($name, $price) {
-		$product = new Products();
-		$product->name = $name;
-		$product->price = $price;
-		return $product;
+	public static function make($customer_id, $product_id) {
+		$order = new Orders();
+		$order->customer_id = $customer_id;
+		$order->product_id = $product_id;
+		return $order;
 	}
 
-	public static function find_by_name($name) {
-		return self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE name LIKE '%$name%'");
+	public static function find_by_customer_id() {
+		return self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE customer_id = {$customer_id}");
 	}
+
 	
 	//datbase object class file
 	public static function find_all() {

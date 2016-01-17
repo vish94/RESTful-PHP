@@ -1,7 +1,7 @@
 <?php require_once('requires/parameters.php'); ?>
 <html>
 <head>
-<title> Analytics </title>
+<title> RESTful API Demo Application </title>
 <link rel="stylesheet" type="text/css" href="<?php echo $dir_assets_css.'default.css'?>">
 </head>
 <body>
@@ -17,6 +17,7 @@
 				<ul>
 				<li><a href="<?php echo $dir_site.'products/'?>"> All Products </a></li>
 				<li><a href="<?php echo $dir_site.'products/add/'?>"> Add Product </a></li>
+				<li><a href="<?php echo $dir_site.'products/search/'?>"> Search Product </a></li>
 				</ul>
 			</li>
 
@@ -25,6 +26,14 @@
 				<ul>
 				<li><a href="<?php echo $dir_site.'customers/'?>"> All Customers </a></li>
 				<li><a href="<?php echo $dir_site.'customers/add/'?>"> Add Customer </a></li>
+				</ul>
+			</li>
+
+			<li>
+				Orders
+				<ul>
+				<li><a href="<?php echo $dir_site.'orders/'?>"> All Orders </a></li>
+				<li><a href="<?php echo $dir_site.'orders/add/'?>"> New Order </a></li>
 				</ul>
 			</li>
 

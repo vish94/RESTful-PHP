@@ -22,10 +22,19 @@
 		}
 
 	} elseif($method=="POST") {
-		
-		$product = Products::make($_POST['name'], $_POST['price']);
-		$product->save();
-		$response['data'] = "Saved";
+		$ele = array_shift($uri);
+		if(empty($uri) || empty($uri[0])) {
+			$product = Products::make($_POST['name'], $_POST['price']);
+			$product->save();
+			$response['data'] = "Saved";
+		} else {
+			$ele = array_shift($uri);
+			if($ele=="search" && (empty($uri) || empty($uri[0]))) {
+				$search = $_POST['name'];
+				$products = Products::find_by_name($search);
+				$response['data'] = $products;
+			}
+		}
 
 	} elseif($method=="PUT") {
 		parse_str(file_get_contents('php://input'), $data);
