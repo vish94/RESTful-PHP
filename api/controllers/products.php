@@ -33,9 +33,9 @@
 		$product->name = $data['name'];
 		$product->price = $data['price'];
 		if($product->save())
-			$response['data'] = 1;
+			$response['data'] = "Saved!";
 		else
-			$response['data'] = 0;
+			$response['data'] = "Error!";
 	} elseif($method=="DELETE") {
 		$ele = array_shift($uri);
 		if($ele=="products" && !empty($uri[0])) {
@@ -44,7 +44,7 @@
 				$product = Products::find_by_id($id);
 				if(!empty($product)) {
 					$product->delete();
-					$response['data'] = $product;
+					$response['data'] = "Successfully Deleted!";
 					unset($product);
 				} else {
 					$response['data'] = "Not found";

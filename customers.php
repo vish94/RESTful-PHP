@@ -1,5 +1,22 @@
 <?php require_once('requires/header.php'); ?>
 <?php
+
+	if(isset($_GET['action'])) {
+		if($_GET['action']=="delete" && ctype_digit($_GET['id'])) {
+			$id = $_GET['id'];
+			$delurl = $apihost.'api/customers/'.$id;
+			$delmethod = "DELETE";
+			$delresult = file_get_contents($delurl, false, 
+		    stream_context_create(array(
+		        'http' => array(
+		            'method' => $delmethod,
+		            'ignore_errors' => true,
+		            )
+		        ))
+	    	);
+    		$delresult = json_decode($delresult, true);
+		}
+	}
 	$url = $apihost.'api/customers/';
 	$method = 'GET';
 	if(isset($_GET['action'])) {
@@ -23,6 +40,15 @@
 ?>
 <div id="content">
 	<h2> All customers</h2>
+
+	<?php 
+		if(isset($delresult)) {
+			echo '<b> API Call: '.$delurl.'</b><br/>';
+			echo '<b> Method: '.$delmethod.'</b><br/>';
+			echo '<i> API Response: '; print_r($delresult); echo '</i><br/><br/><hr>';
+		}
+
+	?>
 	<?php echo '<b> API Call: '.$url.'</b><br/>'; ?>
 	<?php echo '<b> Method: '.$method.'</b><br/>'; ?>
 	<?php echo '<i> API Response: '; print_r($result); echo '</i><br/><br/><hr>'; ?>
@@ -40,7 +66,7 @@
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$customer['id'].'</td>';
 			echo '<td>'.$customer['name'].'</td>';
-			echo '<td><a href="'.$dir_site.'customers/edit/'.$customer['id'].'">Edit</a></td>';
+			echo '<td><a href="'.$dir_site.'customers/edit/'.$customer['id'].'">Edit</a> <a href="'.$dir_site.'customers/?action=delete&id='.$customer['id'].'"> Delete </a></td>';
 			echo '</tr>';
 			$i++;
 		}

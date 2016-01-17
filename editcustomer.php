@@ -7,19 +7,19 @@
 	        'name' => $_POST['name']
 	    	)
 		);
-		$url = $apihost.'api/customers/';
-		$method = 'PUT';
-		$result = file_get_contents($url, false, 
+		$editurl = $apihost.'api/customers/';
+		$editmethod = 'PUT';
+		$saveresult = file_get_contents($editurl, false, 
 		    stream_context_create(array(
 		        'http' => array(
-		            'method' => $method,
+		            'method' => $editmethod,
 		            'ignore_errors' => true,
 		            'header' => 'Content-type: application/x-www-form-urlencoded',
             		'content' => $data
 		            )
 		        ))
 		    );
-	    $saveresult = json_decode($result, true);
+	    $saveresult = json_decode($saveresult, true);
 	}
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
@@ -41,14 +41,13 @@
 ?>
 <div id="content">
 	<h2> Edit Customer</h2>
-	<?php
+	<?php 
 		if(isset($saveresult)) {
-			echo '<b> API Call: '.$apihost.'api/customers/ </b><br/><b>Method: PUT </b></br/><i>Response: ';
-			if($saveresult['data']==1)
-				echo "Successfully Saved!</i><br/><br/>";
-			else
-				echo "Error!</i><br/><br/>";
+			echo '<b> API Call: '.$editurl.'</b><br/>';
+			echo '<b> Method: '.$editmethod.'</b><br/>';
+			echo '<i> API Response: '; print_r($saveresult); echo '</i><br/><br/><hr>';
 		}
+
 	?>
 	<?php echo '<b> API Call: '.$url.'</b><br/>'; ?>
 	<?php echo '<b> Method: '.$method.'</b><br/>'; ?>
