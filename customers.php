@@ -18,29 +18,29 @@
 	        ))
 	    );
     $result = json_decode($result, true);
-    $products = $result['data'];
+    $customers = $result['data'];
 
 ?>
 <div id="content">
-	<h2> All Products</h2>
+	<h2> All customers</h2>
 	<?php echo '<b> API Call: '.$url.'</b><br/>'; ?>
 	<?php echo '<b> Method: '.$method.'</b><br/>'; ?>
 	<?php echo '<i> API Response: '; print_r($result); echo '</i><br/><br/><hr>'; ?>
 
 	<table>
 	<th>Sno.</th>
-	<th>Product ID</th>
-	<th>Product Name</th>
+	<th>Customer ID</th>
+	<th>Customer Name</th>
 	<th>Actions</th>
 	<?php
 		$i=1;
 
-		foreach($products as $product) {
+		foreach($customers as $customer) {
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
-			echo '<td>'.$product['id'].'</td>';
-			echo '<td>'.$product['name'].'</td>';
-			echo '<td><a href="orders.php?action=show&id='.$product['id'].'">Show</a></td>';
+			echo '<td>'.$customer['id'].'</td>';
+			echo '<td>'.$customer['name'].'</td>';
+			echo '<td><a href="'.$dir_site.'customers/edit/'.$customer['id'].'">Edit</a></td>';
 			echo '</tr>';
 			$i++;
 		}

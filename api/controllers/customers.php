@@ -28,6 +28,13 @@
 		$response['data'] = "Saved";
 
 	} elseif($method=="PUT") {
+		parse_str(file_get_contents('php://input'), $data);
+		$customer = Customers::find_by_id($data['id']);
+		$customer->name = $data['name'];
+		if($customer->save())
+			$response['data'] = 1;
+		else
+			$response['data'] = 0;
 
 	} elseif($method=="DELETE") {
 		$ele = array_shift($uri);
