@@ -6,5 +6,4 @@
 	defined('DB_PASS') ? null : define('DB_PASS', $xml->pass);
 	defined('DB_NAME') ? null : define('DB_NAME', $xml->name);
 
-
 ?>

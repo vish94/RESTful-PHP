@@ -1,9 +1,5 @@
 <?php
 	if(isset($_POST['submit'])) {
-		$xml = '<database><host>'.$_POST['host'].'</host><user>'.$_POST['dbuser'].'</user><pass>'.$_POST['dbpass'].'</pass><name>'.$_POST['dbname'].'</name></database>';
-		$file = fopen('../config.xml', "w");
-		fwrite($file, $xml);
-		fclose($file);
 
 		$host = $_POST['host'];
 		$user = $_POST['dbuser'];
@@ -72,6 +68,10 @@
 			mysqli_query($connection, $sql);
 			echo "Test data inserted <br/><br/>";
 
+			$xml = '<database><host>'.$host.'</host><user>'.$user.'</user><pass>'.$pass.'</pass><name>'.$name.'</name></database>';
+			$file = fopen('../config.xml', "w");
+			fwrite($file, $xml);
+			fclose($file);
 		}
 	}
 ?>
