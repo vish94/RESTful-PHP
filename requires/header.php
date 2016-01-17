@@ -1,4 +1,5 @@
 <?php require_once('requires/parameters.php'); ?>
+<?php require_once('requires/functions.php'); ?>
 <html>
 <head>
 <title> RESTful API Demo Application </title>

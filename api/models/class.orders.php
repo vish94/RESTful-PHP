@@ -19,8 +19,16 @@ class Orders extends DatabaseObject
 		return $order;
 	}
 
-	public static function find_by_customer_id() {
+	public static function find_by_customer_id($customer_id) {
 		return self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE customer_id = {$customer_id}");
+	}
+
+	public static function count_by_customer_id($id=0) {
+		global $database;
+		$sql = "SELECT COUNT(*) FROM ".self::$table_name." WHERE customer_id = '{$id}'";
+		$result = $database->query($sql);
+		$row = $database->fetch_array($result);	
+		return array_shift($row);
 	}
 
 	

@@ -83,6 +83,7 @@
 	<th>Sno.</th>
 	<th>Customer ID</th>
 	<th>Customer Name</th>
+	<th>Orders</th>
 	<th>Actions</th>
 	<?php
 		$i=1;
@@ -92,6 +93,7 @@
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$customer['id'].'</td>';
 			echo '<td>'.$customer['name'].'</td>';
+			echo '<td>'.count_orders_by_customer_id($customer['id'], $apihost).'</td>';
 			echo '<td><a href="'.$dir_site.'customers/edit/'.$customer['id'].'">Edit</a> <a href="'.$dir_site.'customers/?action=delete&id='.$customer['id'].'"> Delete </a></td>';
 			echo '</tr>';
 			$i++;

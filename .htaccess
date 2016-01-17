@@ -7,6 +7,7 @@
     RewriteRule ^customers/?$ customers.php [NC,L]
 
     RewriteRule ^orders/?$ orders.php [NC,L]
+    RewriteRule ^orders/add/?$ addorders.php [NC,L]
 
     RewriteRule ^products/search/?$ searchproduct.php [NC,L]
     RewriteRule ^products/edit/([a-z0-9]+)/?$ editproduct.php?id=$1 [NC,L]
