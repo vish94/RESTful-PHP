@@ -9,7 +9,7 @@
 	    	)
 		);
 		$result = file_get_contents(
-	    'http://localhost/rest/api/login/', 
+	    $apihost.'api/login/', 
 	    false, 
 	    stream_context_create(array(
 	        'http' => array(
