@@ -6,7 +6,12 @@
 			$ele = array_shift($uri);
 			if($ele=="products" && (empty($uri) || empty($uri[0]))) {
 				$products = Products::find_all();
-				$response['data'] = $products;
+				if(!empty($products))
+					$response['data'] = $products;
+				else {
+					$response['status'] = 404;
+					$response['data'] = "Not found";
+				}
 			} else {
 				$id = array_shift($uri);
 				if(ctype_digit($id) && (empty($uri) || empty($uri[0]))) {

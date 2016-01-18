@@ -8,7 +8,6 @@
 		} else
 			$response['data'] = 0;
 		$response['username'] = $username;
-		$response['password'] = $password;
 
 	} else {
 		$response['data'] = "Invalid Method";

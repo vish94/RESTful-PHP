@@ -5,9 +5,10 @@
 	$response['method'] = $method;
 	$uri = $_SERVER['REQUEST_URI'];
 	$uri = explode('/', $uri);
-	for($i=0; $i<=2; $i++) {
+	while($uri[0]!="api") {
 		$ele = array_shift($uri);
 	}
+	$ele = array_shift($uri);
 	
 	if($uri[0] == "products") {
 		require_once('controllers/products.php');
