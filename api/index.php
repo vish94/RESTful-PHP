@@ -18,6 +18,8 @@
 		require_once('controllers/login.php');
 	} elseif($uri[0] == "orders") {
 		require_once('controllers/orders.php');
+	} elseif($uri[0] == "setup") {
+		require_once('controllers/orders.php');
 	} else {
 		$response['data'] = "Invalid Request";
 	}
