@@ -1,4 +1,4 @@
-#Introduction
+#Introduction 
 This is a simple RESTful API with PHP in backend. MySQL is being used for database. 
 
 This API facilitates 3 things:
